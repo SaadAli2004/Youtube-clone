@@ -6,58 +6,672 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: "Roboto", sans-serif;
         }
-        img{
-            width: 6.5rem;
+        
+    .container{
+        position: relative;
+    }
+        nav {
+
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            width: 100%;
+            position: sticky;
+            top: 0;
+
         }
-        .side-home{
+
+        /* Navbar */
+        .nav-left {
             display: flex;
             align-items: center;
             gap: .7rem;
 
         }
-        section{
-            width: 30%;
-            border: 1px solid black;
-            height: 100vh;
+
+        .nav-left img {
+            width: 9rem;
+        }
+
+
+        .nav-center {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        i {
+            font-size: 20px;
+        }
+        nav i:hover, img:hover, .search:hover{
+            cursor:pointer
+        }
+
+        .nav-center div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        input {
+            width: 45rem;
+            height: 2rem;
+            border: 2px solid lightgray;
+            font-size: 18px;
+            padding: 0px 10px;
+        }
+
+        
+
+        .search {
+            border: 2px solid lightgray;
+            color: lightgray;
+            border-left: none;
+            height: 2rem;
+            width: 4rem;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+
+        .vid {
+            width: 50px;
+            height: 50px;
+        }
+
+        .nav-right .user {
+            width: 2rem;
+            height: 2rem;
+        }
+
+
+
+        .nav-right .vid {
+            width: 20px;
+            height: 15px;
+            filter: saturate(0);
+            filter: contrast(100);
+        }
+
+
+
+        section {
+            width: 18%;
+            height: 90vh;
+            position: fixed;
+            background-color: white;
+        }
+
+        section a,
+        section i {
+            text-decoration: none;
+            color: rgb(107, 106, 106);
+
+        }
+
+        section a {
+            font-size: 17px;
+        }
+
+
+
+        .section1 div:hover,
+        .section2 div:hover,
+        .section3 div:hover {
+            cursor: pointer;
+            background-color: rgb(215, 213, 213);
+
+            i {
+                color: red
+            }
+
+            a {
+                color: black
+            }
+        }
+
+        .section1,
+        .section2,
+        .section3 {
+            border-bottom: 2px solid lightgray;
+            font-size: 18px;
+
+        }
+
+        .section3 h5 {
+            padding: 5px 15px;
+        }
+
+        .section1 div,
+        .section2 div,
+        .section3 div {
+            display: flex;
+            gap: 1.5rem;
+            padding: 14px 30px;
+
+        }
+
+        .tags {
+            display: flex;
+            justify-content: space-between;
+            gap: .9rem;
+            background-color: white;
+            padding: 13px 0px;
+            border-top: 2px solid lightgray;
+            border-bottom: 2px solid lightgray;
+        }
+
+        button {
+            font-size: 17px;
+            border: 1px solid gray;
+            background-color: rgb(225, 225, 225);
+            border-radius: 15px;
+            padding: 8px 13px;
+        }
+
+        button:hover {
+            cursor: pointer;
+            background-color: black;
+            color: white;
+
+        }
+        
+
+        /* Main container contains video list and tags */
+
+        .main-container{
+            width: 100%; margin-left: 18%;
+        }
+
+        .tags{
+            display: flex; justify-content: center;
+        }
+
+        /* Video list */
+        .video-list {
+            display: flex;
+            padding-top: 20px;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            width: 100%;
+            justify-content: center;
+
+        }
+
+        .thumbnail {
+            width: 100%;
+            height: 200px;
+          background: #ecdfdf;
+background: linear-gradient(124deg,rgba(71, 71, 71, 1) 0%, rgba(0, 0, 0, 1) 100%);
+        }
+
+
+
+        .vid-layout {
+            display: flex;
+            gap: 1rem;
+            padding: 12px 10px;
+        }
+
+        .vid-info {
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+        }
+
+        .para {
+            color: gray;
+        }
+        .vid-container:hover{
+            background-color: rgb(225, 225, 225);
+            cursor:pointer;
         }
     </style>
 </head>
 
 <body>
-    <section>
-        <div class="side-home">
-            <i class="fa-solid fa-bars"></i>
-            <img src="img/logo.png" alt="">
-        </div>
-        <div class="section1">
-            <a href="">Home</a>
-            <a href="">Explore</a>
-            <a href="">Subscriptions</a>
-        </div>
+    <div class="container">
 
-        <div class="section1">
-            <a href="">Library</a>
-            <a href="">History</a>
-            <a href="">Your videos</a>
-            <a href="">Watch later</a>
-            <a href="">Liked videos</a>
+        <nav>
+                <div class="nav-left">
+                    <i class="fa-solid fa-bars"></i>
+                    <img src="img/logo.png" alt="">
+                </div>
+                <div class="nav-center">
+                    <div>
+                        <input type="text" placeholder="Search">
+                        <div class="search"><i class="fa-solid fa-search"></i></div>
+                    </div>
+                    <i class="fa-solid fa-microphone"></i>
+                </div>
+                <div class="nav-right">
+                    <img class="vid" src="img/video.png" alt="">
+                    <i class="fa-brands fa-microsoft"></i>
+                    <i class="fa-solid fa-bell"></i>
+                    <img class="user" src="img/user.png" alt="">
+                </div>
+        </nav>
+        <div class="container1" style="display: flex;">
+            <section>
+                <div class="section1">
+                    <div>
+                        <i class="fa-solid fa-home"></i>
+                        <a href="">Home</a>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-compass"></i>
+                        <a href="">Explore</a>
+    
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-video"></i>
+                        <a href="">Subscriptions</a>
+                    </div>
+                </div>
+                <div class="section2">
+                    <div>
+                        <i class="fa-solid fa-folder"></i>
+                        <a href="">Library</a>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-history"></i>
+                        <a href="">History</a>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-circle-play"></i>
+                        <a href="">Your videos</a>
+    
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-clock"></i>
+                        <a href="">Watch later</a>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-thumbs-up"></i>
+                        <a href="">Home</a>
+    
+                    </div>
+                </div>
+                <div class="section3">
+                    <h5>SUBSCRIPTIONS</h5>
+                    <div>
+                        <i class="fa-solid fa-music"></i>
+                        <a href="">Music</a>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-trophy"></i>
+                        <a href="">Sports</a>
+    
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-gamepad"></i>
+                        <a href="">Gaming</a>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-newspaper"></i>
+                        <a href="">News</a>
+    
+                    </div>
+                </div>
+            </section>
+            <div class="main-container">
+                <div class="tags">
+                    <button>All</button>
+                    <button>Music</button>
+                    <button>Mixes</button>
+                    <button>User interface design</button>
+                    <button>Nollywood</button>
+                    <button>Logos</button>
+                    <button>Graphic design</button>
+                    <button>Website</button>
+                    <button>Computer Science</button>
+                    <button>Contemporary</button>
+                </div>
+                <div class="video-list">
+                    <div class="vid-container">
+                        <div class="thumbnail">
+                        </div>
+                        <div class="vid-layout">
+                            <div class="channel-ico">
+                                <img src="img/user.png" style="width: 50px;" alt="">
+                            </div>
+                            <div class="vid-info">
+                                <p>
+                                    <strong>
+                                        UI Design Trends 2021
+                                    </strong>
+                                </p>
+                                <p class="para">
+                                    DesignSense
+                                    521K views • 5 months ago
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="vid-container">
+                        <div class="thumbnail">
+                        </div>
+                        <div class="vid-layout">
+                            <div class="channel-ico">
+                                <img src="img/user.png" style="width: 50px;" alt="">
+                            </div>
+                            <div class="vid-info">
+                                <p>
+                                    <strong>
+                                        UI Design Trends 2021
+                                    </strong>
+                                </p>
+                                <p class="para">
+                                    DesignSense
+                                    521K views • 5 months ago
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="vid-container">
+                        <div class="thumbnail">
+                        </div>
+                        <div class="vid-layout">
+                            <div class="channel-ico">
+                                <img src="img/user.png" style="width: 50px;" alt="">
+                            </div>
+                            <div class="vid-info">
+                                <p>
+                                    <strong>
+                                        UI Design Trends 2021
+                                    </strong>
+                                </p>
+                                <p class="para">
+                                    DesignSense
+                                    521K views • 5 months ago
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="vid-container">
+                        <div class="thumbnail">
+                        </div>
+                        <div class="vid-layout">
+                            <div class="channel-ico">
+                                <img src="img/user.png" style="width: 50px;" alt="">
+                            </div>
+                            <div class="vid-info">
+                                <p>
+                                    <strong>
+                                        UI Design Trends 2021
+                                    </strong>
+                                </p>
+                                <p class="para">
+                                    DesignSense
+                                    521K views • 5 months ago
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="vid-container">
+                        <div class="thumbnail">
+                        </div>
+                        <div class="vid-layout">
+                            <div class="channel-ico">
+                                <img src="img/user.png" style="width: 50px;" alt="">
+                            </div>
+                            <div class="vid-info">
+                                <p>
+                                    <strong>
+                                        UI Design Trends 2021
+                                    </strong>
+                                </p>
+                                <p class="para">
+                                    DesignSense
+                                    521K views • 5 months ago
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="vid-container">
+                        <div class="thumbnail">
+                        </div>
+                        <div class="vid-layout">
+                            <div class="channel-ico">
+                                <img src="img/user.png" style="width: 50px;" alt="">
+                            </div>
+                            <div class="vid-info">
+                                <p>
+                                    <strong>
+                                        UI Design Trends 2021
+                                    </strong>
+                                </p>
+                                <p class="para">
+                                    DesignSense
+                                    521K views • 5 months ago
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="vid-container">
+                        <div class="thumbnail">
+                        </div>
+                        <div class="vid-layout">
+                            <div class="channel-ico">
+                                <img src="img/user.png" style="width: 50px;" alt="">
+                            </div>
+                            <div class="vid-info">
+                                <p>
+                                    <strong>
+                                        UI Design Trends 2021
+                                    </strong>
+                                </p>
+                                <p class="para">
+                                    DesignSense
+                                    521K views • 5 months ago
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="vid-container">
+                        <div class="thumbnail">
+                        </div>
+                        <div class="vid-layout">
+                            <div class="channel-ico">
+                                <img src="img/user.png" style="width: 50px;" alt="">
+                            </div>
+                            <div class="vid-info">
+                                <p>
+                                    <strong>
+                                        UI Design Trends 2021
+                                    </strong>
+                                </p>
+                                <p class="para">
+                                    DesignSense
+                                    521K views • 5 months ago
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="vid-container">
+                        <div class="thumbnail">
+                        </div>
+                        <div class="vid-layout">
+                            <div class="channel-ico">
+                                <img src="img/user.png" style="width: 50px;" alt="">
+                            </div>
+                            <div class="vid-info">
+                                <p>
+                                    <strong>
+                                        UI Design Trends 2021
+                                    </strong>
+                                </p>
+                                <p class="para">
+                                    DesignSense
+                                    521K views • 5 months ago
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="vid-container">
+                        <div class="thumbnail">
+                        </div>
+                        <div class="vid-layout">
+                            <div class="channel-ico">
+                                <img src="img/user.png" style="width: 50px;" alt="">
+                            </div>
+                            <div class="vid-info">
+                                <p>
+                                    <strong>
+                                        UI Design Trends 2021
+                                    </strong>
+                                </p>
+                                <p class="para">
+                                    DesignSense
+                                    521K views • 5 months ago
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="vid-container">
+                        <div class="thumbnail">
+                        </div>
+                        <div class="vid-layout">
+                            <div class="channel-ico">
+                                <img src="img/user.png" style="width: 50px;" alt="">
+                            </div>
+                            <div class="vid-info">
+                                <p>
+                                    <strong>
+                                        UI Design Trends 2021
+                                    </strong>
+                                </p>
+                                <p class="para">
+                                    DesignSense
+                                    521K views • 5 months ago
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="vid-container">
+                        <div class="thumbnail">
+                        </div>
+                        <div class="vid-layout">
+                            <div class="channel-ico">
+                                <img src="img/user.png" style="width: 50px;" alt="">
+                            </div>
+                            <div class="vid-info">
+                                <p>
+                                    <strong>
+                                        UI Design Trends 2021
+                                    </strong>
+                                </p>
+                                <p class="para">
+                                    DesignSense
+                                    521K views • 5 months ago
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="vid-container">
+                        <div class="thumbnail">
+                        </div>
+                        <div class="vid-layout">
+                            <div class="channel-ico">
+                                <img src="img/user.png" style="width: 50px;" alt="">
+                            </div>
+                            <div class="vid-info">
+                                <p>
+                                    <strong>
+                                        UI Design Trends 2021
+                                    </strong>
+                                </p>
+                                <p class="para">
+                                    DesignSense
+                                    521K views • 5 months ago
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="vid-container">
+                        <div class="thumbnail">
+                        </div>
+                        <div class="vid-layout">
+                            <div class="channel-ico">
+                                <img src="img/user.png" style="width: 50px;" alt="">
+                            </div>
+                            <div class="vid-info">
+                                <p>
+                                    <strong>
+                                        UI Design Trends 2021
+                                    </strong>
+                                </p>
+                                <p class="para">
+                                    DesignSense
+                                    521K views • 5 months ago
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="vid-container">
+                        <div class="thumbnail">
+                        </div>
+                        <div class="vid-layout">
+                            <div class="channel-ico">
+                                <img src="img/user.png" style="width: 50px;" alt="">
+                            </div>
+                            <div class="vid-info">
+                                <p>
+                                    <strong>
+                                        UI Design Trends 2021
+                                    </strong>
+                                </p>
+                                <p class="para">
+                                    DesignSense
+                                    521K views • 5 months ago
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="vid-container">
+                        <div class="thumbnail">
+                        </div>
+                        <div class="vid-layout">
+                            <div class="channel-ico">
+                                <img src="img/user.png" style="width: 50px;" alt="">
+                            </div>
+                            <div class="vid-info">
+                                <p>
+                                    <strong>
+                                        UI Design Trends 2021
+                                    </strong>
+                                </p>
+                                <p class="para">
+                                    DesignSense
+                                    521K views • 5 months ago
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+    
         </div>
-        <div class="section2"></div>
-        <div class="subcription">
-            <h2></h2>
-            <a href="">Music</a>
-            <a href="">Sports</a>
-            <a href="">Gaming</a>
-            <a href="">News</a>
+    </div>
 
-        </div>
-    </section>
 
 </body>
 
